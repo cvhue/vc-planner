@@ -70,10 +70,28 @@ angular.module('vcPlannerApp')
       });
 
 
+      $scope.deleteVC = function(index) {
+        $scope.vcs.$remove(index);
+      };
+      $scope.deleteLoc = function(index) {
+        $scope.locations.$remove(index);
+      };
       $scope.deleteStartup = function(index) {
-        console.log('deleted ' + index);
+        $scope.startups.$remove(index);
       };
 
 
+      $scope.timeblocks = apiService.timeblocks;
+
+      $scope.saveTime = function() {
+        $scope.timeblocks.$save();
+      }
+
+      $scope.timeblocks.$loaded(function() {
+        if (angular.isUndefined($scope.timeblocks)) {
+          $scope.timeblocks.value = 6;
+          $scope.timeblocks.$save();
+        }
+      });
 
     }]);

@@ -8,7 +8,7 @@
   <tbody>
     <tr ng-repeat="vc in vcs">
       <td>{{vc.name}}</td>
-      <td ng-repeat="startup in startups"><input type="number"  min="1" max="5" ng-model="desiderate[vc.name][startup.name]" style="width: 35px"/>
+      <td ng-repeat="startup in startups"><input type="number"  min="1" max="5" ng-click="saveDesiderate()" ng-model="desiderate[vc.name][startup.name]" style="width: 35px"/>
       </td>
     </tr>
   </tbody>
