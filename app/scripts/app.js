@@ -15,7 +15,8 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'firebase'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -30,6 +31,14 @@ angular
       .when('/input', {
         templateUrl: 'views/input.html',
         controller: 'InputCtrl'
+      })
+      .when('/desiderate', {
+        templateUrl: 'views/desiderate.html',
+        controller: 'DesiderateCtrl'
+      })
+      .when('/solve', {
+        templateUrl: 'views/solve.html',
+        controller: 'SolveCtrl'
       })
       .otherwise({
         redirectTo: '/'

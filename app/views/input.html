@@ -1,1 +1,40 @@
-<p>This is the input view.</p>
+<div class="row">
+
+  <div class="col-lg-4 col-md-6">
+
+    <h3> Locations</h3>
+
+    <ul >
+      <li ng-repeat="loc in locations">{{loc.name}}
+        <span class="pull-right" style="color:red" ng-click="deleteLoc($index)"><i class="fa fa-times"></i></span></li>
+    </ul>
+    <input type="text" ng-model="location"/>
+    <button class="btn btn-sm btn-primary" ng-click="addLocation()"> <i class="fa fa-plus"></i></button>
+
+  </div>
+
+  <div class="col-lg-4 col-md-6">
+    <h3> VCs</h3>
+    <ul >
+      <li ng-repeat="v in vcs">{{v.name}}
+        <span class="pull-right" style="color:red" ng-click="deleteVC($index)"><i class="fa fa-times"></i></span></li>
+    </ul>
+    <input type="text" ng-model="vc"/> <button class="btn btn-sm btn-primary" ng-click="addVC()"> <i class="fa fa-plus"></i></button>
+    <br/>
+  </div>
+
+  <div class="col-lg-4 col-md-6">
+
+    <h3> Startups</h3>
+    <ul >
+      <li ng-repeat="s in startups"><span ng-bind="s.name"></span>
+        <span class="pull-right" style="color:red" ng-click="deleteStartup($index)"><i class="fa fa-times"></i></span> </li>
+    </ul>
+    <input type="text" ng-model="startup"/> <button class="btn btn-sm btn-primary pull-right" ng-click="addStartup()"> <i class="fa fa-plus"></i></button>
+    <br/>
+
+  </div>
+
+</div>
+
+
