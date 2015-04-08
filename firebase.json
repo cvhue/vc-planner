@@ -1,0 +1,9 @@
+{
+  "firebase": "vc-planner",
+  "public": "dist",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}
