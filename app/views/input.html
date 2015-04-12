@@ -1,50 +1,66 @@
 <div class="row">
 
-  <div class="col-lg-4 col-md-6 well">
+  <div class="col-lg-4 col-md-6">
+    <div class="well">
+      <h3> Locations</h3>
+      <ul >
+        <li ng-repeat="loc in locations">{{loc.name}}
+          <span class="pull-right" style="color:red" ng-click="deleteLoc($index)"><i class="fa fa-times"></i></span></li>
+      </ul>
+      <input type="text" ng-model="location"/>
+      <button class="btn btn-sm btn-primary" ng-click="addLocation()"> <i class="fa fa-plus"></i></button>
+    </div>
+  </div>
 
-    <h3> Locations</h3>
+  <div class="col-lg-4 col-md-6 ">
+    <div class="well">
+      <h3> VCs</h3>
+      <ul >
+        <li ng-repeat="v in vcs">{{v.name}}
+          <span class="pull-right" style="color:red" ng-click="deleteVC($index)"><i class="fa fa-times"></i></span></li>
+      </ul>
+      <input type="text" ng-model="vc"/> <button class="btn btn-sm btn-primary" ng-click="addVC()"> <i class="fa fa-plus"></i></button>
+      <br/>
+    </div>
+  </div>
 
-    <ul >
-      <li ng-repeat="loc in locations">{{loc.name}}
-        <span class="pull-right" style="color:red" ng-click="deleteLoc($index)"><i class="fa fa-times"></i></span></li>
-    </ul>
-    <input type="text" ng-model="location"/>
-    <button class="btn btn-sm btn-primary" ng-click="addLocation()"> <i class="fa fa-plus"></i></button>
+
+  <!--<div class="col-lg-4 col-md-6 ">-->
+    <!--<div class="well">-->
+      <!--<h3> VC persons </h3>-->
+      <!--<ul >-->
+        <!--<li ng-repeat="v in vcperson">{{v.name}}-->
+          <!--<span class="pull-right" style="color:red" ng-click="deleteVC($index)"><i class="fa fa-times"></i></span></li>-->
+      <!--</ul>-->
+      <!--<input type="text" ng-model="vc"/> <button class="btn btn-sm btn-primary" ng-click="addVC()"> <i class="fa fa-plus"></i></button>-->
+      <!--<select name="test" ng-options="vc.name for vc in vcs" ng-model="vcperson" id=""></select>-->
+      <!--<br/>-->
+    <!--</div>-->
+  <!--</div>-->
+
+
+  <div class="col-lg-4 col-md-6">
+    <div class="well">
+      <h3> Startups</h3>
+      <ul >
+        <li ng-repeat="s in startups"><span ng-bind="s.name"></span>
+          <span class="pull-right" style="color:red" ng-click="deleteStartup($index)"><i class="fa fa-times"></i></span> </li>
+      </ul>
+      <input type="text" ng-model="startup"/> <button class="btn btn-sm btn-primary pull-right" ng-click="addStartup()"> <i class="fa fa-plus"></i></button>
+      <br/>
+    </div>
 
   </div>
 
-  <div class="col-lg-4 col-md-6 well">
-    <h3> VCs</h3>
-    <ul >
-      <li ng-repeat="v in vcs">{{v.name}}
-        <span class="pull-right" style="color:red" ng-click="deleteVC($index)"><i class="fa fa-times"></i></span></li>
-    </ul>
-    <input type="text" ng-model="vc"/> <button class="btn btn-sm btn-primary" ng-click="addVC()"> <i class="fa fa-plus"></i></button>
-    <br/>
-  </div>
-
-  <div class="col-lg-4 col-md-6 well">
-
-    <h3> Startups</h3>
-    <ul >
-      <li ng-repeat="s in startups"><span ng-bind="s.name"></span>
-        <span class="pull-right" style="color:red" ng-click="deleteStartup($index)"><i class="fa fa-times"></i></span> </li>
-    </ul>
-    <input type="text" ng-model="startup"/> <button class="btn btn-sm btn-primary pull-right" ng-click="addStartup()"> <i class="fa fa-plus"></i></button>
-    <br/>
-
-  </div>
-
-  <div class="col-lg-4 col-md-6 well">
-
-    <h3> Time</h3>
-    <label for="time">
-      # time blocks:
-      <input type="number" id="time" name="time" ng-model="timeblocks.value" ng-change="saveTime()"/></button>
-    </label>
-    <br/>
-
-
+  <div class="col-lg-4 col-md-6">
+    <div class="well">
+      <h3> Time</h3>
+      <label for="time">
+        # time blocks:
+        <input type="number" id="time" name="time" ng-model="timeblocks.value" ng-change="saveTime()"/></button>
+      </label>
+      <br/>
+    </div>
   </div>
 
 </div>

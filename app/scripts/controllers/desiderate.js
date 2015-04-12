@@ -17,13 +17,14 @@ angular.module('vcPlannerApp')
 
     $scope.desiderate.$loaded(function() {
 
-      if (angular.isUndefined($scope.desiderate)) {
-        angular.forEach($scope.vcs, function(vc) {
-          if(angular.isUndefined($scope.desiderate[vc.name]) ) $scope.desiderate[vc.name] = {};
-          angular.forEach($scope.startups, function(startup) {
-            if(angular.isUndefined($scope.desiderate[vc.name][startup.name]) ) $scope.desiderate[vc.name][startup.name] = 1;
-          });
+      angular.forEach($scope.vcs, function(vc) {
+        if(angular.isUndefined($scope.desiderate[vc.name]) ) $scope.desiderate[vc.name] = {};
+        angular.forEach($scope.startups, function(startup) {
+          if(angular.isUndefined($scope.desiderate[vc.name][startup.name]) ) $scope.desiderate[vc.name][startup.name] = 1;
         });
+      });
+      if (angular.isUndefined($scope.desiderate)) {
+        $scope.desiderate = {}
         $scope.desiderate.$save();
       }
     });

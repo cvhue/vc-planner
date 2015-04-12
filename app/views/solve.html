@@ -1,8 +1,12 @@
 <div class="text-center" ng-init="solve = false">
-  <button class="btn btn-lg btn-primary" ng-click="solve = true">SOLVE</button>
+  <button class="btn btn-lg btn-primary" ng-click="startSolving()">SOLVE</button>
   <div ng-show="solve">
     Not yet implemented!
   </div>
+
+  <h3 ng-if="solve" style="color:dimgray">
+    {{counter}}
+  </h3>
 
 </div>
 
