@@ -1,15 +1,30 @@
+<div class="pull-right">
+  <button class="btn btn-primary" ng-click="saveDesiderate()">save</button>
+  <button class="btn btn-danger" ng-click="removeDesiderate()">reset</button>
+  <!--<span class="pull-right"><button class="btn btn-default" ng-click="removeColumn()"><i class="fa fa-times" style="color:red" ></i></button></span>-->
+  <!--<span class="pull-right"> <button class="btn btn-default" ng-click="addColumn()" ><i class="fa fa-plus" style="color:green" ></i></button></span>-->
+
+</div>
+
 <table class="table">
   <thead>
   <tr>
     <th></th>
-    <th ng-repeat="startup in startups">{{startup.name}}</th>
+    <th ng-repeat="choice in choices">{{choice}}</th>
   </tr>
+
   </thead>
   <tbody>
     <tr ng-repeat="vc in vcs">
       <td>{{vc.name}}</td>
-      <td ng-repeat="startup in startups"><input type="number"  min="1" max="5" ng-click="saveDesiderate()" ng-model="desiderate[vc.name][startup.name]" style="width: 35px"/>
-      </td>
+      <td ng-repeat="choice in choices">
+        <select name="desidarate-{vc.name}" id="dd" ng-model="desiderate[vc.name][choice]" ng-options="startup.name as startup.name for startup in startups"></select>
+       </td>
     </tr>
   </tbody>
 </table>
+
+
+<div class="well">
+  {{desiderate}}
+</div>

@@ -17,6 +17,10 @@ angular.module('vcPlannerApp')
     var startup = new Firebase(URL+'startup');
     var desiderate = new Firebase(URL+'desiderate');
     var timeblock = new Firebase(URL+'timeblock');
+    var assignments = new Firebase(URL+'assignments');
+    var choices = new Firebase(URL+'choices');
+    var solver = new Firebase(URL+'solver');
+
 
 
     var service = {
@@ -24,7 +28,10 @@ angular.module('vcPlannerApp')
       vc: $firebaseArray(vc),
       startup: $firebaseArray(startup),
       desiderate: $firebaseObject(desiderate),
-      timeblocks: $firebaseObject(timeblock)
+      timeblocks: $firebaseArray(timeblock),
+      assignments: $firebaseArray(assignments),
+      choices: $firebaseArray(choices),
+      solver: $firebaseObject(solver)
     };
 
     return service;

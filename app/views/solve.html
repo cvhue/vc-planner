@@ -1,13 +1,53 @@
-<div class="text-center" ng-init="solve = false">
-  <button class="btn btn-lg btn-primary" ng-click="startSolving()">SOLVE</button>
-  <div ng-show="solve">
-    Not yet implemented!
-  </div>
+<div class="well">
+  <h4 class="blue">Solver
+    <span class="pull-right" ng-init="solve = false">
+      <button class="btn btn-lg btn-primary" ng-click="startSolving()">SOLVE</button>
+      <span>
+        <h3 ng-if="solve" style="color:dimgray">
+          {{counter}}
+        </h3>
+      </span>
+    </span>
+  </h4>
 
-  <h3 ng-if="solve" style="color:dimgray">
-    {{counter}}
-  </h3>
 
+
+  <br/>
+
+  Last solve: <span class="subtext">{{lastSolve()}}</span>
 </div>
 
+
+
 <br/>
+
+
+<div class="well">
+  <h4 class="blue">Metrics</h4>
+
+  <table class="table">
+    <thead>
+    <th>VC</th>
+    <th>Score</th>
+    <th>#</th>
+    <th>Got First?</th>
+    </thead>
+    <tbody>
+    <tr ng-repeat="vc in plan.vcs">
+      <td><span ng-bind="vc.name"></span></td>
+      <td><span ng-bind="score[vc.name]"></span></td>
+      <td><span ng-bind="totalAppointments[vc.name]"></span></td>
+      <td><span ng-bind="gotFirst[vc.name]"></span></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<div class="well">
+  <h4>Assignments</h4>
+
+  <div ng-repeat="a in assignments | orderBy: 'vc'">
+    {{a.vc}} - {{a.timeBlock}} - {{a.startup}} - {{a.location}}
+  </div>
+</div>

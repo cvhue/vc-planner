@@ -32,9 +32,9 @@ body {
 }
 
 /* Customize container */
-@media (min-width: 768px) {
+@media (min-width: 868px) {
   .container {
-    max-width: 930px;
+    max-width: 1080px;
   }
 }
 .container-narrow > hr {
@@ -77,3 +77,17 @@ body {
     border-bottom: 0;
   }
 }
+
+
+.subtext {
+  font-style: italic;
+  color: #808080;
+}
+
+.red {
+  color: red;
+}
+
+
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+

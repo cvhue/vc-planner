@@ -1,65 +1,139 @@
 <div class="row">
 
-  <div class="col-lg-4 col-md-6">
+  <div class="col-lg-3 col-md-6">
     <div class="well">
-      <h3> Locations</h3>
+      <h3> Locations  (<span ng-bind="locations.length"></span>)</h3>
       <ul >
         <li ng-repeat="loc in locations">{{loc.name}}
           <span class="pull-right" style="color:red" ng-click="deleteLoc($index)"><i class="fa fa-times"></i></span></li>
+        <li>
+          <input type="text" ng-model="location"/>
+          <button class="btn btn-sm btn-primary" ng-click="addLocation()"> <i class="fa fa-plus"></i></button>
+        </li>
       </ul>
-      <input type="text" ng-model="location"/>
-      <button class="btn btn-sm btn-primary" ng-click="addLocation()"> <i class="fa fa-plus"></i></button>
+
     </div>
   </div>
 
-  <div class="col-lg-4 col-md-6 ">
+  <div class="col-lg-3 col-md-6">
     <div class="well">
-      <h3> VCs</h3>
-      <ul >
-        <li ng-repeat="v in vcs">{{v.name}}
-          <span class="pull-right" style="color:red" ng-click="deleteVC($index)"><i class="fa fa-times"></i></span></li>
-      </ul>
-      <input type="text" ng-model="vc"/> <button class="btn btn-sm btn-primary" ng-click="addVC()"> <i class="fa fa-plus"></i></button>
-      <br/>
-    </div>
-  </div>
-
-
-  <!--<div class="col-lg-4 col-md-6 ">-->
-    <!--<div class="well">-->
-      <!--<h3> VC persons </h3>-->
-      <!--<ul >-->
-        <!--<li ng-repeat="v in vcperson">{{v.name}}-->
-          <!--<span class="pull-right" style="color:red" ng-click="deleteVC($index)"><i class="fa fa-times"></i></span></li>-->
-      <!--</ul>-->
-      <!--<input type="text" ng-model="vc"/> <button class="btn btn-sm btn-primary" ng-click="addVC()"> <i class="fa fa-plus"></i></button>-->
-      <!--<select name="test" ng-options="vc.name for vc in vcs" ng-model="vcperson" id=""></select>-->
-      <!--<br/>-->
-    <!--</div>-->
-  <!--</div>-->
-
-
-  <div class="col-lg-4 col-md-6">
-    <div class="well">
-      <h3> Startups</h3>
+      <h3> Startups (<span ng-bind="startups.length"></span>)</h3>
       <ul >
         <li ng-repeat="s in startups"><span ng-bind="s.name"></span>
           <span class="pull-right" style="color:red" ng-click="deleteStartup($index)"><i class="fa fa-times"></i></span> </li>
+        <li>
+          <input type="text" ng-model="startup"/> <button class="btn btn-sm btn-primary pull-right" ng-click="addStartup()"> <i class="fa fa-plus"></i></button>
+        </li>
       </ul>
-      <input type="text" ng-model="startup"/> <button class="btn btn-sm btn-primary pull-right" ng-click="addStartup()"> <i class="fa fa-plus"></i></button>
       <br/>
+    </div>
+  </div>
+
+
+  <div class="col-lg-6 col-md-6 ">
+    <div class="well">
+      <h3> VCs (<span ng-bind="vcs.length"></span>)</h3>
+
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="v in vcs">
+            <td>{{v.name}}</td>
+            <td>
+              <span><input type="text" ng-model="v.email" ng-change="saveVC($index)"/></span>
+              <span class="pull-right" style="color:red" ng-click="deleteVC($index)"><i class="fa fa-times"></i></span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <label for="vcname">VC name:</label>
+      <input id="vcname" type="text" ng-model="vc"/>
+      <button class="btn btn-sm btn-primary pull-right" ng-click="addVC()"> <i class="fa fa-plus"></i></button>
+      <br/>
+    </div>
+  </div>
+
+
+
+
+
+</div>
+<div class="row">
+  <div class="col-lg-4 col-md-6">
+    <div class="well">
+      <h3> Choices (<span ng-bind="choices.length"></span>)</h3>
+
+
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Choice</th>
+          <th>Value</th>
+        </tr>
+
+        </thead>
+        <tbody>
+        <tr ng-repeat="choice in choices">
+          <td>{{choice.name}}</td>
+          <td><span class="pull-right" style="color:red" ng-click="deleteChoice($index)"><i class="fa fa-times"></i></span>
+            <span><input type="number" ng-model="choice.value" ng-change="saveChoice($index)" style="width: 40px; height:24px"/></span>
+          </td>
+        </tr>
+        </tbody>
+
+      </table>
+      <input type="text" ng-model="choice"/> <button class="btn btn-sm btn-primary pull-right" ng-click="addChoice()"> <i class="fa fa-plus"></i></button>
+
+
     </div>
 
   </div>
 
+
   <div class="col-lg-4 col-md-6">
     <div class="well">
-      <h3> Time</h3>
-      <label for="time">
-        # time blocks:
-        <input type="number" id="time" name="time" ng-model="timeblocks.value" ng-change="saveTime()"/></button>
-      </label>
-      <br/>
+      <h3> Timeblocks (<span ng-bind="timeblocks.length"></span>)</h3>
+
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Index</th>
+          <th>Name</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="s in timeblocks">
+            <td>
+              <span><input type="number" ng-model="s.index" ng-change="saveTimeBlock($index)" style="width: 40px; height:24px"/></span>
+            </td>
+            <td>
+              <span ng-bind="s.name"></span>
+              <span class="pull-right" style="color:red" ng-click="deleteTimeblock($index)"><i class="fa fa-times"></i></span>
+            </td>
+          </tr>
+        </tbody>
+
+      </table>
+      <input type="text" ng-model="timeblock"/> <button class="btn btn-sm btn-primary pull-right" ng-click="addTimeblock()"> <i class="fa fa-plus"></i></button>
+
+
+      <!--<ul >-->
+        <!--<li ng-repeat="s in timeblocks">-->
+          <!--<span><input type="number" ng-model="s.index" ng-change="saveTimeBlock($index)" style="width: 40px; height:24px"/></span>-->
+          <!--<span class="pull-right" style="color:red" ng-click="deleteTimeblock($index)"><i class="fa fa-times"></i></span>-->
+          <!--<span class="pull-right" ng-bind="s.name"></span>-->
+        <!--</li>-->
+        <!--<li>-->
+          <!--<input type="text" ng-model="timeblock"/> <button class="btn btn-sm btn-primary pull-right" ng-click="addTimeblock()"> <i class="fa fa-plus"></i></button>-->
+        <!--</li>-->
+      <!--</ul>-->
+      <!--<br/>-->
     </div>
   </div>
 

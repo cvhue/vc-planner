@@ -8,6 +8,6 @@
  * Controller of the vcPlannerApp
  */
 angular.module('vcPlannerApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('PlanController', function ($scope) {
 
   });

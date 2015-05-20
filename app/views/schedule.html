@@ -1,0 +1,27 @@
+<h4>Filter: </h4>
+      <div class="btn-group">
+        <label ng-repeat="vc in plan.vcs" class="btn btn-primary" ng-model="$parent.vcfilter" btn-radio="'{{vc.name}}'" uncheckable>{{vc.name}}</label>
+      </div>
+
+<h3>Schedule</h3>
+
+<table class="table" ng-if="isLoaded">
+  <thead>
+  <tr>
+    <th>Time</th>
+    <th ng-repeat="location in plan.locations">{{location.name}}</th>
+  </tr>
+
+  </thead>
+  <tbody>
+  <tr ng-repeat="time in plan.timeblocks">
+    <td>{{time.name}}</td>
+    <td ng-repeat="location in plan.locations" >
+      <span ng-class="{red: containsVC(vcfilter,time,location)}">
+              {{getAssignment(time,location)}}
+      </span>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
